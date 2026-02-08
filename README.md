@@ -1,37 +1,36 @@
 # Rui Shao
 
-Production infrastructure engineer. Kubernetes, distributed systems, observability. US/EU market focus.
+Infrastructure engineer working on large-scale production systems. AWS (10+ regions), Kubernetes (25+ clusters, 600+ nodes). Safe deployment, traffic control, observability, cost-aware operations. AI-assisted agents for operational workflows.
 
 ## Positioning
 
-I build and operate systems that stay up. AI infra, observability, high-throughput data pipelines. Less hype, more runbooks.
+I build platforms at the boundary of infrastructure and backend systems — automation and AI-driven analysis to make complex environments easier to operate, safer to change, and faster to recover under real production pressure.
 
 ## Core domains
 
-- Production infrastructure (Kubernetes, Docker, Helm)
-- AI infrastructure (task lifecycle, scheduling, model deployment)
-- Observability (Prometheus, Grafana, Loki, InfluxDB)
-- Distributed systems (gRPC, Kafka, Redis, MySQL)
+- **Platform control** — deployments, releases, traffic switching, access governance across multi-cloud, multi-cluster
+- **Observability** — service impact, SLO-driven views, AI-assisted on-call investigation
+- **Cost & efficiency** — Spot/Reserved Instances, lifecycle policies, topology-aware optimizations
+- **Distributed systems** — task execution, gRPC streaming, concurrency control, state consistency
 
 ## Signature experience
 
-- Built AI task lifecycle management platform with Kubernetes Operator — workflow scheduling, deployment, versioning for training and inference
-- Optimized large-scale offline data image pull (kube-fledged, containerd) — reduced cold start by 60%
-- Developed high-traffic gRPC metrics service — async streaming, object pooling, Goroutine reuse; latency 200ms→50ms, memory -40%
-- Deployed Prometheus Kubernetes Operator for 100+ metrics; scaled Loki with Promtail sharding; Kafka 100k msg/sec
+**Datavisor (Infrastructure Engineer, 2025 – present)**
+- Designed change execution workflows with rollback and approval gates — deployment time 30min → 5min
+- Implemented cross-cluster traffic switching and failover (canary, blue-green) — incident recovery time -80%
+- Built AI-assisted on-call workflow aggregating anomalies, affected services, dependencies, logs for faster triage
+- Optimized cloud costs via Spot/Reserved Instances — 20–40% compute reduction without SLO impact
 
-## Engineering philosophy
+**Intel (Cloud Software Development Engineer, 2022 – 2025)**
+- Built distributed task execution and data-processing systems on Kubernetes — concurrency control, state consistency, failure handling
+- Engineered high-throughput gRPC streaming service — pprof-driven optimization, 200ms → 50ms latency, reduced GC pressure
+- Designed correctness-first scheduling and version update mechanisms with transactional boundaries and distributed coordination
 
-- Reliability is a practiced discipline, not a feature
-- Cost visibility precedes cost optimization
-- Deployments are a primary failure mode; design for rollback first
-- External dependencies are single points of failure; treat them like your own infra
+## Skills
 
-## Current focus
-
-- AI infrastructure: cost-aware routing, evaluation pipelines, agent orchestration
-- Safe deployment patterns
-- Observability layering (when to use logs vs metrics vs traces)
+**Languages:** Python, Golang, Java, Shell, SQL  
+**Infra & tools:** AWS, GCP, Kubernetes, Docker, MySQL, YugaByte, ClickHouse, Redis, Kafka, Elasticsearch, Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git  
+**Human languages:** Chinese, English
 
 ## Repos
 
