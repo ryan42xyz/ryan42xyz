@@ -1,0 +1,120 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{setspace}
+
+% ---------- Fonts ----------
+\setmainfont{Times New Roman}
+
+% ---------- Section Style ----------
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{8pt}{6pt}
+
+% ---------- List Style ----------
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+% ---------- Hyperlink ----------
+\hypersetup{
+  colorlinks=true,
+  urlcolor=black
+}
+
+% ---------- Document ----------
+\begin{document}
+\pagenumbering{gobble}
+
+% ---------- Header ----------
+\begin{center}
+    {\LARGE \textbf{Rui Shao}} \\[6pt]
+    +86-15623713170 / +81-07090122378 \quad
+    \href{mailto:sr1054461216@gmail.com}{sr1054461216@gmail.com} \quad
+    \href{https://github.com/shaorui0}{github.com/shaorui0} \quad
+
+    \end{center}
+
+% ---------- About ----------
+\section*{About}
+
+Infrastructure engineer working on large-scale production systems on AWS (10+ regions) and Kubernetes (25+ clusters with 600+ nodes), with a focus on safe deployment, traffic control, observability, and cost-aware operations, increasingly leveraging AI-assisted agents to support decision-making and operational workflows.\\
+\noindent Built platforms at the boundary of infrastructure and backend systems, combining automation and AI-driven analysis to make complex environments easier to operate, safer to change, and faster to recover under real production pressure.
+
+% ---------- Experience ----------
+\section*{Experience}
+% ===== Datavisor =====
+\noindent
+\textbf{Datavisor} \hfill \textit{Infrastructure Engineer} \hfill 2025/03 -- Present (China, Japan)
+
+\vspace{4pt}
+
+\noindent\textbf{\textit{Platform Control \& Production Infrastructure}}
+\begin{itemize}
+  \item Built backend control-plane services to manage \textbf{deployments, releases, traffic switching, and access governance} across multi-cloud, multi-cluster environments.
+  \item Designed end-to-end change execution workflows with rollback and approval gates, reducing deployment time from \textbf{\textasciitilde30 minutes to \textasciitilde5 minutes} while improving release reliability.
+  \item Implemented cross-cluster traffic switching and failover supporting canary and blue--green releases, reducing incident recovery time by \textbf{\textasciitilde80\%}.
+  \item Operated and evolved production Kubernetes platforms on AWS, including cluster upgrades, node lifecycle management, and multi-AZ / multi-region architectures with defined RTO/RPO targets.
+\end{itemize}
+
+\vspace{3pt}
+
+\noindent\textbf{\textit{Observability, On-call \& Reliability}}
+
+\textit{Service Health, Incident Response}
+\begin{itemize}
+  \item Built and operated observability systems spanning infrastructure, middleware, and service-level signals across multiple Kubernetes clusters.
+  \item Shifted monitoring from resource-centric dashboards to \textbf{service impact and SLO-driven views}, improving signal quality and reducing alert fatigue.
+  \item Developed an \textbf{AI-assisted on-call investigation workflow} that aggregates anomalies, affected services/customers, dependencies, recent changes, and logs into a unified context, enabling faster human-led triage and informed incident response, capacity planning, and performance tuning.
+\end{itemize}
+
+\vspace{3pt}
+
+\noindent\textbf{\textit{Cost \& Operational Efficiency}}
+\begin{itemize}
+  \item Optimized cloud costs via selective use of Spot and Reserved Instances, achieving \textbf{20--40\% compute cost reduction} without violating service SLOs.
+  \item Reduced storage and data transfer costs through lifecycle policies, tiered storage, and topology-aware optimizations.
+\end{itemize}
+
+\vspace{6pt} % company-level semantic break
+
+% ===== Intel =====
+\noindent
+\textbf{Intel} \hfill \textit{Cloud Software Development Engineer} \hfill 2022/06 -- 2025/02 (China)
+
+\vspace{2pt}
+\begin{itemize}
+  \item Built core \textbf{distributed task execution and data-processing systems} on Kubernetes, forming a strong foundation in \textbf{concurrency control, state consistency, and failure handling} under parallel workloads.
+  \item Engineered a \textbf{high-throughput gRPC streaming service}, using profiling-driven optimization (\textbf{pprof}), memory reuse, and async pipelines to cut latency from \textbf{200ms $\rightarrow$ 50ms} and significantly reduce GC and memory pressure.
+  \item Designed \textbf{correctness-first scheduling and version update mechanisms} using transactional boundaries and distributed coordination, preventing race conditions and inconsistent intermediate states.
+\end{itemize}
+
+% ---------- Skills ----------
+\section*{Skills}
+
+\textbf{Programming Languages:} Python, Golang, Java, Shell, SQL \\
+\textbf{Tools:} AWS, GCP, Kubernetes, Docker, MySQL, YugaByte, Clickhouse, Redis, Kafka, Elasticsearch, Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git \\
+\textbf{Languages:} Chinese, English
+
+
+
+% ---------- Education ----------
+\section*{Education}
+
+\textbf{Master}, University of Science \& Technology Beijing (Beijing, China) \hfill 2019/09 -- 2022/06 \\
+Computer Science and Technology
+
+\vspace{4pt}
+\noindent
+\textbf{Bachelor}, Wenhua College (Wuhan, China) \hfill 2014/09 -- 2018/06 \\
+Electronic Information Engineering
+
+\end{document}
