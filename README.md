@@ -2,6 +2,8 @@
 
 Infrastructure engineer working on large-scale production systems. AWS (10+ regions), Kubernetes (25+ clusters, 600+ nodes). Safe deployment, traffic control, observability, cost-aware operations. AI-assisted agents for operational workflows.
 
+**Blog:** [ryan42xyz.github.io](https://ryan42xyz.github.io/) · **GitHub:** [@ryan42xyz](https://github.com/ryan42xyz)
+
 ## Positioning
 
 I build platforms at the boundary of infrastructure and backend systems — automation and AI-driven analysis to make complex environments easier to operate, safer to change, and faster to recover under real production pressure.
