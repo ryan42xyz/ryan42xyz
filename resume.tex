@@ -1,15 +1,22 @@
 \documentclass[11pt,a4paper]{article}
 
 % ---------- Packages ----------
-\usepackage[margin=1.2cm]{geometry}
+\usepackage[margin=1.15cm]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage{fontspec}
-\usepackage{setspace}
 
 % ---------- Fonts ----------
-\setmainfont{Times New Roman}
+\setmainfont{Times New Roman}[
+  Path = /System/Library/Fonts/Supplemental/,
+  UprightFont = Times New Roman,
+  BoldFont = Times New Roman Bold,
+  ItalicFont = Times New Roman Italic,
+  BoldItalicFont = Times New Roman Bold Italic,
+  Extension = .ttf
+]
 
 % ---------- Section Style ----------
 \titleformat{\section}
@@ -19,7 +26,7 @@
   {}
   [\titlerule]
 
-\titlespacing*{\section}{0pt}{8pt}{6pt}
+\titlespacing*{\section}{0pt}{7pt}{5pt}
 
 % ---------- List Style ----------
 \setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
@@ -30,91 +37,116 @@
   urlcolor=black
 }
 
+% ---------- Color ----------
+\definecolor{CompanyColor}{HTML}{0B3D91}
+
+% ---------- Typography ----------
+\newcommand{\company}[1]{{\large\textcolor{CompanyColor}{\textbf{#1}}}}
+\newcommand{\expsection}[1]{{\small\textbf{\textit{#1}}}}
+
 % ---------- Document ----------
 \begin{document}
 \pagenumbering{gobble}
 
 % ---------- Header ----------
-\begin{center}
-    {\LARGE \textbf{Rui Shao}} \\[6pt]
-    +86-15623713170 / +81-07090122378 \quad
-    \href{mailto:sr1054461216@gmail.com}{sr1054461216@gmail.com} \quad
-    \href{https://github.com/ryan42xyz}{github.com/ryan42xyz} \quad
+\noindent
+\begin{minipage}[t]{0.62\textwidth}
+  {\fontsize{22}{24}\selectfont \textbf{Rui Shao}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.36\textwidth}
+  \raggedleft
+  {\small +86-15623713170 / +81-07090122378}\\
+  {\small \href{mailto:sr1054461216@gmail.com}{sr1054461216@gmail.com}}\\
+  {\small \href{https://github.com/ryan42xyz}{github.com/ryan42xyz}}
+\end{minipage}
 
-    \end{center}
-
-% ---------- About ----------
-\section*{About}
-
-Infrastructure engineer working on large-scale production systems on AWS (10+ regions) and Kubernetes (25+ clusters with 600+ nodes), with a focus on safe deployment, traffic control, observability, and cost-aware operations, increasingly leveraging AI-assisted agents to support decision-making and operational workflows.\\
-\noindent Built platforms at the boundary of infrastructure and backend systems, combining automation and AI-driven analysis to make complex environments easier to operate, safer to change, and faster to recover under real production pressure.
+\vspace{-2pt}
 
 % ---------- Experience ----------
 \section*{Experience}
+
 % ===== Datavisor =====
 \noindent
-\textbf{Datavisor} \hfill \textit{Infrastructure Engineer} \hfill 2025/03 -- Present (China, Japan)
+\href{https://www.datavisor.com}{\company{Datavisor}} \hfill \textit{Senior Site Reliability Engineer (Japan)} \hfill 2025/10 -- Present \\
+\phantom{\href{https://www.datavisor.com}{\company{Datavisor}}} \hfill \textit{Site Reliability Engineer (China)} \hfill 2025/03 -- 2025/10
 
 \vspace{4pt}
 
-\noindent\textbf{\textit{Platform Control \& Production Infrastructure}}
+\noindent\expsection{Deployment \& Reliability} \hfill \textit{(\textbf{AWS} \textbf{10+ regions} | \textbf{Kubernetes} \textbf{30+ clusters} | \textbf{600+ nodes} )} \hfill \mbox{}
 \begin{itemize}
-  \item Built backend control-plane services to manage \textbf{deployments, releases, traffic switching, and access governance} across multi-cloud, multi-cluster environments.
-  \item Designed end-to-end change execution workflows with rollback and approval gates, reducing deployment time from \textbf{\textasciitilde30 minutes to \textasciitilde5 minutes} while improving release reliability.
-  \item Implemented cross-cluster traffic switching and failover supporting canary and blue--green releases, reducing incident recovery time by \textbf{\textasciitilde80\%}.
-  \item Operated and evolved production Kubernetes platforms on AWS, including cluster upgrades, node lifecycle management, and multi-AZ / multi-region architectures with defined RTO/RPO targets.
+  \item Led end-to-end production \textbf{Kubernetes} upgrades (1.24$\rightarrow$1.29) across \textbf{30+ multi-region clusters}, covering control plane, worker nodes, and addon components (\textbf{Calico}, \textbf{AWS CCM}, \textbf{cluster-autoscaler}).
+  \item Built an upgrade CLI (\textbf{Python}/\textbf{Ansible}/\textbf{boto3}) automating health checks, dry-run planning, and evidence collection---cutting per-cluster time from \textbf{18--21h to 3--4h} ($\sim$80\% reduction), halving operator headcount, with \textbf{zero incidents} across the full rollout.
 \end{itemize}
 
-\vspace{3pt}
+\vspace{2pt}
 
-\noindent\textbf{\textit{Observability, On-call \& Reliability}}
-
-\textit{Service Health, Incident Response}
+\noindent\expsection{Traffic \& Multi-Region}
 \begin{itemize}
-  \item Built and operated observability systems spanning infrastructure, middleware, and service-level signals across multiple Kubernetes clusters.
-  \item Shifted monitoring from resource-centric dashboards to \textbf{service impact and SLO-driven views}, improving signal quality and reducing alert fatigue.
-  \item Developed an \textbf{AI-assisted on-call investigation workflow} that aggregates anomalies, affected services/customers, dependencies, recent changes, and logs into a unified context, enabling faster human-led triage and informed incident response, capacity planning, and performance tuning.
+  \item Designed and built a distributed \textbf{auto traffic-switch system} from scratch (\textbf{Master-Detector} architecture), integrating 4 infrastructure backends (\textbf{AWS ALB}, \textbf{API Gateway}, \textbf{Global Accelerator}, \textbf{Kubernetes}) across \textbf{30 production clusters}.
+  \item Reduced incident traffic-switch response time from \textbf{5--15\,min to seconds} by automating fault detection and switch execution, eliminating manual multi-console operations.
 \end{itemize}
 
-\vspace{3pt}
+\vspace{2pt}
 
-\noindent\textbf{\textit{Cost \& Operational Efficiency}}
+\noindent\expsection{Observability} \hfill \textit{(\textbf{40 tenants} | \textbf{$\sim$1.2M active series} | \textbf{$\sim$80K samples/sec})} \hfill \mbox{}
 \begin{itemize}
-  \item Optimized cloud costs via selective use of Spot and Reserved Instances, achieving \textbf{20--40\% compute cost reduction} without violating service SLOs.
-  \item Reduced storage and data transfer costs through lifecycle policies, tiered storage, and topology-aware optimizations.
+  \item Built production observability stack (\textbf{vmagent} $\rightarrow$ \textbf{VictoriaMetrics} cluster $\rightarrow$ \textbf{vmalert} $\rightarrow$ \textbf{Alertmanager} $\rightarrow$ \textbf{Grafana} + \textbf{Loki}) serving 30 clusters, 600 nodes, 40 tenants.
+  \item Migrated from \textbf{Prometheus Federation} to \textbf{VictoriaMetrics} cluster; eliminated weekly OOM incidents (previously 2--3$\times$/week), reduced global data lag from \textbf{45s to $<$5s}, and cut hot storage from \textbf{$\sim$930\,GB to $\sim$250\,GB}.
+  \item Designed 3-tier alerting (\textbf{PAGER/HIGH/MEDIUM}) with inhibition rules, per-tenant \textbf{SLI} recording rules, and latency decomposition (upstream vs.\ waiting latency via ingress access logs); enabling per-tenant fault isolation and SLA tracking across 40 clients.
 \end{itemize}
 
-\vspace{6pt} % company-level semantic break
+\vspace{2pt}
+
+\noindent\expsection{On-call \& Incident Response}
+\begin{itemize}
+  \item Served as primary on-call for production \textbf{Kubernetes} and \textbf{AWS} across 30+ clusters; resolved \textbf{20+ P1/P2 incidents} with avg MTTR of \textbf{$\sim$30\,min}.
+  \item Restored services through controlled mitigations (traffic splitting, cordon/drain, bounded scaling).
+\end{itemize}
+
+\vspace{5pt}
 
 % ===== Intel =====
 \noindent
-\textbf{Intel} \hfill \textit{Cloud Software Development Engineer} \hfill 2022/06 -- 2025/02 (China)
+\href{https://www.intel.com}{\company{Intel}} \hfill \textit{Cloud Software Development Engineer} \hfill 2022/06 -- 2025/02
 
 \vspace{2pt}
 \begin{itemize}
-  \item Built core \textbf{distributed task execution and data-processing systems} on Kubernetes, forming a strong foundation in \textbf{concurrency control, state consistency, and failure handling} under parallel workloads.
-  \item Engineered a \textbf{high-throughput gRPC streaming service}, using profiling-driven optimization (\textbf{pprof}), memory reuse, and async pipelines to cut latency from \textbf{200ms $\rightarrow$ 50ms} and significantly reduce GC and memory pressure.
-  \item Designed \textbf{correctness-first scheduling and version update mechanisms} using transactional boundaries and distributed coordination, preventing race conditions and inconsistent intermediate states.
+  \item Built \textbf{Kubernetes} platform tooling using operator-style controllers, IaC (GitOps/Ansible) cluster management.
+  \item Developed Go-based \textbf{gRPC} service using \textbf{OpenTelemetry SDK} to transform structured messages into metrics and stream high-throughput time-series via \textbf{Kafka} into \textbf{Prometheus} and \textbf{InfluxDB}.
 \end{itemize}
+
+\vspace{4pt}
+
+% ===== Internships =====
+\noindent
+\href{https://www.tencent.com}{\company{Tencent}} \hfill \textit{Software Development Engineer Intern} \hfill 2021/05 -- 2021/09 \\
+Built Go-based gRPC microservices for live-streaming workloads, working with Kafka, MySQL, and Redis.
+
+\vspace{2pt}
+\noindent
+\href{https://www.bytedance.com}{\company{ByteDance}} \hfill \textit{Software Development Engineer Intern} \hfill 2021/03 -- 2021/05
+
+\vspace{1pt}
+\noindent
+\href{https://www.data.ai}{\company{App Annie}} \hfill \textit{Web Backend Engineer Intern} \hfill 2020/11 -- 2021/02
+
+\vspace{0pt}
+\noindent
+\href{https://www.baidu.com}{\company{Baidu}} \hfill \textit{Data Engineer Intern} \hfill 2020/01 -- 2020/10
 
 % ---------- Skills ----------
 \section*{Skills}
-
-\textbf{Programming Languages:} Python, Golang, Java, Shell, SQL \\
-\textbf{Tools:} AWS, GCP, Kubernetes, Docker, MySQL, YugaByte, Clickhouse, Redis, Kafka, Elasticsearch, Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git \\
-\textbf{Languages:} Chinese, English
-
-
+\textbf{Languages:} Python, Golang, Java, Shell, SQL \\
+\textbf{Infrastructure \& Data:} AWS, GCP, Kubernetes, Docker, MySQL, Yugabyte, ClickHouse, Redis, Kafka, Elasticsearch \\
+\textbf{Observability \& Platform:} Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git, Jenkins
 
 % ---------- Education ----------
 \section*{Education}
-
-\textbf{Master}, University of Science \& Technology Beijing (Beijing, China) \hfill 2019/09 -- 2022/06 \\
-Computer Science and Technology
+\textbf{Master}, {\small University of Science \& Technology Beijing, Computer Science and Technology (Beijing, China)} \hfill {\small 2019/09 -- 2022/06}
 
 \vspace{4pt}
 \noindent
-\textbf{Bachelor}, Wenhua College (Wuhan, China) \hfill 2014/09 -- 2018/06 \\
-Electronic Information Engineering
+\textbf{Bachelor}, {\small Wenhua College, Electronic Information Engineering (Wuhan, China)} \hfill {\small 2014/09 -- 2018/06}
 
 \end{document}
