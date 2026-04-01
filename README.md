@@ -1,6 +1,6 @@
 # Rui Shao
 
-Senior Site Reliability Engineer by day. I build production control systems for large-scale Kubernetes and cloud environments (AWS 10+ regions, 30+ clusters, 600+ nodes). Outside work: AI infrastructure, agentic workflows, and tools that extend what one person can operate alone.
+Senior Site Reliability Engineer by day. I build production control systems for large-scale Kubernetes and cloud environments (AWS 6 regions, 30+ clusters, 600+ nodes). Outside work: AI infrastructure, agentic workflows, and tools that extend what one person can operate alone.
 
 Blog: [ryan42xyz.github.io](https://ryan42xyz.github.io/) · GitHub: [@ryan42xyz](https://github.com/ryan42xyz) · Email: [sr1054461216@gmail.com](mailto:sr1054461216@gmail.com)
 
@@ -20,31 +20,26 @@ I treat production as a controllable system: make change safer, isolate failure,
 
 ### Datavisor — Senior Site Reliability Engineer (Japan) (2025/10–Present); Site Reliability Engineer (China) (2025/03–2025/10)
 
-**Deployment & Reliability** _(AWS 10+ regions | Kubernetes 30+ clusters | 600+ nodes)_
+**AI Agent Engineering**
 
-- Led end-to-end production Kubernetes upgrades (1.24→1.29) across 30+ multi-region clusters, covering control plane, worker nodes, and addon components (Calico, AWS CCM, cluster-autoscaler).
-- Built an upgrade CLI (Python/Ansible/boto3) automating health checks, dry-run planning, and evidence collection — cutting per-cluster time from **18–21h to 3–4h** (~80% reduction), halving operator headcount, with **zero incidents** across the full rollout.
+- Built an autonomous SRE triage agent as a Claude Code skill, used in daily on-call to auto-investigate production alerts via structured debug trees and MCP tool calls (VictoriaMetrics, Grafana, Loki).
+- Designed 3-layer code-level safety system — query validation, cluster-tier enforcement, scope tracking — ensuring all agent operations are read-only; unknown environments default to the most restrictive policy.
+- Engineered a 132-file knowledge base (6-cluster routing, 7 executable debug trees, 35 incident cases) with JSONL observability tracing for every tool call and safety decision.
 
-**Traffic & Multi-Region**
+**Infrastructure & Reliability** _(AWS 6 regions | K8s 30+ clusters | 600+ nodes)_
 
-- Designed and built a distributed **auto traffic-switch system** from scratch (Master-Detector architecture), integrating 4 infrastructure backends (AWS ALB, API Gateway, Global Accelerator, Kubernetes) across 30 production clusters.
-- Reduced incident traffic-switch response time from **5–15 min to seconds** by automating fault detection and switch execution, eliminating manual multi-console operations.
+- Led production Kubernetes upgrades (1.24→1.29) across 30+ clusters; built automation tool cutting per-cluster time from **18–21h to 3–4h** with **zero incidents**.
+- Designed distributed auto traffic-switch system across 4 AWS/K8s backends, reducing failover from manual **5–15 min to seconds**.
 
-**Observability** _(40 tenants | ~1.2M active series | ~80K samples/sec)_
+**Observability & On-call** _(40 tenants | ~1.2M active series)_
 
-- Built production observability stack (vmagent → VictoriaMetrics cluster → vmalert → Alertmanager → Grafana + Loki) serving 30 clusters, 600 nodes, 40 tenants.
-- Migrated from Prometheus Federation to VictoriaMetrics cluster; eliminated weekly OOM incidents (previously 2–3×/week), reduced global data lag from **45s to <5s**, and cut hot storage from **~930 GB to ~250 GB**.
-- Designed 3-tier alerting (PAGER/HIGH/MEDIUM) with inhibition rules, per-tenant SLI recording rules, and latency decomposition (upstream vs. waiting latency via ingress access logs); enabling per-tenant fault isolation and SLA tracking across 40 clients.
-
-**On-call & Incident Response**
-
-- Served as primary on-call for production Kubernetes and AWS across 30+ clusters; resolved **20+ P1/P2 incidents** with avg MTTR of **~30 min**.
-- Restored services through controlled mitigations (traffic splitting, cordon/drain, bounded scaling).
+- Built full-stack monitoring (VictoriaMetrics + Grafana + Loki) serving 30 clusters and 40 tenants; migrated from Prometheus Federation, eliminating weekly OOM and reducing data lag from **45s to <5s**.
+- Designed 3-tier alerting with per-tenant SLI rules, enabling tenant-level fault isolation and SLA tracking.
+- Primary on-call for 30+ production clusters; resolved **20+ P1/P2 incidents** with avg MTTR **~30 min**.
 
 ### Intel — Cloud Software Development Engineer (China) (2022/06–2025/02)
 
-- Built Kubernetes platform tooling using operator-style controllers, IaC (GitOps/Ansible) cluster management.
-- Developed Go-based gRPC service using OpenTelemetry SDK to transform structured messages into metrics and stream high-throughput time-series via Kafka into Prometheus and InfluxDB.
+Developed Go microservices and Kubernetes operators for platform tooling; owned production monitoring infrastructure and collaborated with product teams to design end-to-end observability (OpenTelemetry → Kafka → Prometheus/InfluxDB).
 
 ### Earlier internships
 
@@ -52,6 +47,12 @@ I treat production as a controllable system: make change safer, isolate failure,
 - **ByteDance** (Software Development Engineer Intern, 2021/03–2021/05)
 - **App Annie** (Web Backend Engineer Intern, 2020/11–2021/02)
 - **Baidu** (Data Engineer Intern, 2020/01–2020/10)
+
+## Projects
+
+- **[ryan42xyz/agents](https://github.com/ryan42xyz/agents)** — SRE Triage Agent (Anthropic SDK reimplementation with full agent loop, safety gates, eval framework)
+- **[ryan42xyz/context-infrastructure](https://github.com/ryan42xyz/context-infrastructure)** — Personal AI-native context system, memory architecture, and agentic workflow infrastructure
+- **[ryan42xyz/chatgpt_flow](https://github.com/ryan42xyz/chatgpt_flow)** — Browser extension to extract and organize ChatGPT conversation data
 
 ## Skills
 

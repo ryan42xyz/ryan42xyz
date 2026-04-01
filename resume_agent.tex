@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 
 % ---------- Packages ----------
-\usepackage[margin=1.15cm]{geometry}
+\usepackage[margin=1.0cm]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -26,7 +26,7 @@
   {}
   [\titlerule]
 
-\titlespacing*{\section}{0pt}{7pt}{5pt}
+\titlespacing*{\section}{0pt}{5pt}{3pt}
 
 % ---------- List Style ----------
 \setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
@@ -63,6 +63,11 @@
 
 \vspace{-2pt}
 
+% ---------- Summary ----------
+\section*{Summary}
+\noindent
+SRE with 3+ years operating large-scale \textbf{Kubernetes}/\textbf{AWS} production (30+ clusters, 6 regions, 40 tenants). Built a production \textbf{AI agent} for autonomous incident triage on \textbf{Claude Code}, applying SRE reliability principles (deterministic safety gates, structured observability, evaluation frameworks) to LLM-powered automation. Seeking to bridge deep infrastructure expertise with agent systems engineering.
+
 % ---------- Experience ----------
 \section*{Experience}
 
@@ -73,48 +78,39 @@
 
 \vspace{4pt}
 
-\noindent\expsection{Deployment \& Reliability} \hfill \textit{(\textbf{AWS} \textbf{6 regions} | \textbf{Kubernetes} \textbf{30+ clusters} | \textbf{600+ nodes} )} \hfill \mbox{}
+\noindent\expsection{AI Agent Engineering}
 \begin{itemize}
-  \item Led end-to-end production \textbf{Kubernetes} upgrades (1.24$\rightarrow$1.29) across \textbf{30+ multi-region clusters}, covering control plane, worker nodes, and addon components (\textbf{Calico}, \textbf{AWS CCM}, \textbf{cluster-autoscaler}).
-  \item Built an upgrade CLI (\textbf{Python}/\textbf{Ansible}/\textbf{boto3}) automating health checks, dry-run planning, and evidence collection---cutting per-cluster time from \textbf{18--21h to 3--4h} ($\sim$80\% reduction), halving operator headcount, with \textbf{zero incidents} across the full rollout.
+  \item Built an autonomous \textbf{SRE triage agent} as a \textbf{Claude Code} skill, used in daily on-call to auto-investigate production alerts via structured debug trees and \textbf{MCP} tool calls (\textbf{VictoriaMetrics}, \textbf{Grafana}, \textbf{Loki}).
+  \item Designed 3-layer code-level safety system---query validation, cluster-tier enforcement, scope tracking---ensuring all agent operations are read-only; unknown environments default to the most restrictive policy.
+  \item Engineered a 132-file knowledge base (6-cluster routing, 7 executable debug trees, 35 incident cases) with \textbf{JSONL} observability tracing for every tool call and safety decision.
 \end{itemize}
 
 \vspace{2pt}
 
-\noindent\expsection{Traffic \& Multi-Region}
+\noindent\expsection{Infrastructure \& Reliability} \hfill \textit{(\textbf{AWS 6 regions} | \textbf{K8s 30+ clusters} | \textbf{600+ nodes})} \hfill \mbox{}
 \begin{itemize}
-  \item Designed and built a distributed \textbf{auto traffic-switch system} from scratch (\textbf{Master-Detector} architecture), integrating 4 infrastructure backends (\textbf{AWS ALB}, \textbf{API Gateway}, \textbf{Global Accelerator}, \textbf{Kubernetes}) across \textbf{30 production clusters}.
-  \item Reduced incident traffic-switch response time from \textbf{5--15\,min to seconds} by automating fault detection and switch execution, eliminating manual multi-console operations.
+  \item Led production \textbf{Kubernetes} upgrades (1.24$\rightarrow$1.29) across 30+ clusters; built automation tool cutting per-cluster time from \textbf{18--21h to 3--4h} with \textbf{zero incidents}.
+  \item Designed distributed \textbf{auto traffic-switch system} across 4 AWS/K8s backends, reducing failover from manual \textbf{5--15\,min to seconds}.
 \end{itemize}
 
 \vspace{2pt}
 
-\noindent\expsection{Observability} \hfill \textit{(\textbf{40 tenants} | \textbf{$\sim$1.2M active series} | \textbf{$\sim$80K samples/sec})} \hfill \mbox{}
+\noindent\expsection{Observability \& On-call} \hfill \textit{(\textbf{40 tenants} | \textbf{$\sim$1.2M active series})} \hfill \mbox{}
 \begin{itemize}
-  \item Built production observability stack (\textbf{vmagent} $\rightarrow$ \textbf{VictoriaMetrics} cluster $\rightarrow$ \textbf{vmalert} $\rightarrow$ \textbf{Alertmanager} $\rightarrow$ \textbf{Grafana} + \textbf{Loki}) serving 30 clusters, 600 nodes, 40 tenants.
-  \item Migrated from \textbf{Prometheus Federation} to \textbf{VictoriaMetrics} cluster; eliminated weekly OOM incidents (previously 2--3$\times$/week), reduced global data lag from \textbf{45s to $<$5s}, and cut hot storage from \textbf{$\sim$930\,GB to $\sim$250\,GB}.
-  \item Designed 3-tier alerting (\textbf{PAGER/HIGH/MEDIUM}) with inhibition rules, per-tenant \textbf{SLI} recording rules, and latency decomposition (upstream vs.\ waiting latency via ingress access logs); enabling per-tenant fault isolation and SLA tracking across 40 clients.
+  \item Built full-stack monitoring (\textbf{VictoriaMetrics} + \textbf{Grafana} + \textbf{Loki}) serving 30 clusters and 40 tenants; migrated from Prometheus Federation, eliminating weekly OOM and reducing data lag from \textbf{45s to $<$5s}.
+  \item Designed 3-tier alerting with per-tenant \textbf{SLI} rules, enabling tenant-level fault isolation and SLA tracking.
+  \item Primary on-call for 30+ production clusters; resolved \textbf{20+ P1/P2 incidents} with avg MTTR \textbf{$\sim$30\,min}.
 \end{itemize}
 
-\vspace{2pt}
-
-\noindent\expsection{On-call \& Incident Response}
-\begin{itemize}
-  \item Served as primary on-call for production \textbf{Kubernetes} and \textbf{AWS} across 30+ clusters; resolved \textbf{20+ P1/P2 incidents} with avg MTTR of \textbf{$\sim$30\,min}.
-  \item Restored services through controlled mitigations (traffic splitting, cordon/drain, bounded scaling).
-\end{itemize}
-
-\vspace{5pt}
+\vspace{3pt}
 
 % ===== Intel =====
 \noindent
 \href{https://www.intel.com}{\company{Intel}} \hfill \textit{Cloud Software Development Engineer} \hfill 2022/06 -- 2025/02
 
 \vspace{2pt}
-\begin{itemize}
-  \item Built \textbf{Kubernetes} platform tooling using operator-style controllers, IaC (GitOps/Ansible) cluster management.
-  \item Developed Go-based \textbf{gRPC} service using \textbf{OpenTelemetry SDK} to transform structured messages into metrics and stream high-throughput time-series via \textbf{Kafka} into \textbf{Prometheus} and \textbf{InfluxDB}.
-\end{itemize}
+\noindent
+Developed \textbf{Go} microservices and \textbf{Kubernetes} operators for platform tooling; owned production monitoring infrastructure and collaborated with product teams to design end-to-end observability (\textbf{OpenTelemetry} $\rightarrow$ \textbf{Kafka} $\rightarrow$ \textbf{Prometheus}/\textbf{InfluxDB}).
 
 \vspace{4pt}
 
@@ -134,6 +130,13 @@ Built Go-based gRPC microservices for live-streaming workloads, working with Kaf
 \vspace{0pt}
 \noindent
 \href{https://www.baidu.com}{\company{Baidu}} \hfill \textit{Data Engineer Intern} \hfill 2020/01 -- 2020/10
+
+% ---------- Projects ----------
+\section*{Projects}
+\noindent
+\href{https://github.com/ryan42xyz/agents}{\textbf{ryan42xyz/agents}} --- SRE Triage Agent (Anthropic SDK reimplementation with full agent loop, safety gates, eval framework) \\
+\href{https://github.com/ryan42xyz/context-infrastructure}{\textbf{ryan42xyz/context-infrastructure}} --- Personal AI-native context system, memory architecture, and agentic workflow infrastructure \\
+\href{https://github.com/ryan42xyz/chatgpt_flow}{\textbf{ryan42xyz/chatgpt\_flow}} --- Browser extension to extract and organize ChatGPT conversation data
 
 % ---------- Skills ----------
 \section*{Skills}

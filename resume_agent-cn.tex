@@ -1,0 +1,160 @@
+\documentclass[10.5pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1.0cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontspec}
+
+% ---------- Fonts ----------
+\setmainfont{Hiragino Sans GB}[BoldFont=Hiragino Sans GB W6, ItalicFont=Hiragino Sans GB W3]
+\newfontfamily\enfont{Times New Roman}[
+  Path = /System/Library/Fonts/Supplemental/,
+  UprightFont = Times New Roman,
+  BoldFont = Times New Roman Bold,
+  ItalicFont = Times New Roman Italic,
+  BoldItalicFont = Times New Roman Bold Italic,
+  Extension = .ttf
+]
+
+% ---------- Section Style ----------
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{5pt}{3pt}
+
+% ---------- List Style ----------
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+% ---------- Hyperlink ----------
+\hypersetup{
+  colorlinks=true,
+  urlcolor=black
+}
+
+% ---------- Color ----------
+\definecolor{CompanyColor}{HTML}{0B3D91}
+
+% ---------- Typography ----------
+\newcommand{\company}[1]{{\large\textcolor{CompanyColor}{\textbf{#1}}}}
+\newcommand{\expsection}[1]{{\small\textbf{#1}}}
+
+% ---------- CJK line breaking ----------
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% ---------- Document ----------
+\begin{document}
+\pagenumbering{gobble}
+
+% ---------- Header ----------
+\noindent
+\begin{minipage}[t]{0.62\textwidth}
+  {\fontsize{22}{24}\selectfont \textbf{邵\quad 瑞}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.36\textwidth}
+  \raggedleft
+  {\small +86-15623713170 / +81-07090122378}\\
+  {\small \href{mailto:sr1054461216@gmail.com}{sr1054461216@gmail.com}}\\
+  {\small \href{https://github.com/ryan42xyz}{github.com/ryan42xyz}}
+\end{minipage}
+
+\vspace{-2pt}
+
+% ---------- Summary ----------
+\section*{个人简介}
+\noindent
+3 年以上大规模 \textbf{Kubernetes}/\textbf{AWS} 生产环境运维经验（30+ 集群，6 个区域，40 个租户）。基于 \textbf{Claude Code} 构建了生产级 \textbf{AI Agent}，用于自主告警分诊，将 SRE 可靠性工程原则（确定性安全门控、结构化可观测性、评估框架）应用于 LLM 驱动的自动化。致力于将深厚的基础设施经验与 Agent 系统工程相结合。
+
+% ---------- Experience ----------
+\section*{工作经历}
+
+% ===== Datavisor =====
+\noindent
+\href{https://www.datavisor.com}{\company{Datavisor}} \hfill 高级 SRE（日本） \hfill 2025/10 -- 至今 \\
+\phantom{\href{https://www.datavisor.com}{\company{Datavisor}}} \hfill SRE（中国） \hfill 2025/03 -- 2025/10
+
+\vspace{4pt}
+
+\noindent\expsection{AI Agent 工程}
+\begin{itemize}
+  \item 构建自主 \textbf{SRE 分诊 Agent}（\textbf{Claude Code} skill），日常 oncall 中使用，通过结构化 debug tree 和 \textbf{MCP} 工具调用（\textbf{VictoriaMetrics}、\textbf{Grafana}、\textbf{Loki}）自动调查生产告警。
+  \item 设计 3 层代码级安全体系——查询校验、集群分级管控、作用域追踪——确保所有 Agent 操作为只读；未知环境默认采用最严格策略。
+  \item 构建 132 文件运维知识库（6 类故障路由、7 棵可执行决策树、35 个事故案例），每个工具调用和安全决策均有 \textbf{JSONL} 可观测追踪。
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\expsection{基础设施与可靠性} \hfill (\textbf{AWS 6 区域} | \textbf{K8s 30+ 集群} | \textbf{600+ 节点}) \hfill \mbox{}
+\begin{itemize}
+  \item 主导 30+ 集群的生产 \textbf{Kubernetes} 跨版本升级（1.24$\rightarrow$1.29）；开发自动化工具，将单集群耗时从 \textbf{18--21h 压缩至 3--4h}，全程\textbf{零事故}。
+  \item 从零设计分布式\textbf{自动流量切换系统}，集成 4 种 AWS/K8s 后端，故障切换从人工 \textbf{5--15 分钟缩短至秒级}。
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\expsection{可观测性与 On-call} \hfill (\textbf{40 租户} | \textbf{$\sim$120 万活跃指标}) \hfill \mbox{}
+\begin{itemize}
+  \item 搭建全栈监控（\textbf{VictoriaMetrics} + \textbf{Grafana} + \textbf{Loki}），服务 30 集群、40 租户；从 Prometheus Federation 迁移至 VictoriaMetrics，消除每周 OOM，数据延迟从 \textbf{45s 降至 $<$5s}。
+  \item 设计 3 级告警体系，配合租户级 \textbf{SLI} 规则，实现按租户隔离告警和 SLA 追踪。
+  \item 30+ 生产集群主 oncall；处理 \textbf{20+ P1/P2 事故}，平均 MTTR \textbf{$\sim$30 分钟}。
+\end{itemize}
+
+\vspace{3pt}
+
+% ===== Intel =====
+\noindent
+\href{https://www.intel.com}{\company{Intel}} \hfill 云软件开发工程师 \hfill 2022/06 -- 2025/02
+
+\vspace{2pt}
+\noindent
+开发 \textbf{Go} 微服务和 \textbf{Kubernetes} Operator；负责生产监控系统建设，与产品团队协作设计端到端可观测性方案（\textbf{OpenTelemetry} $\rightarrow$ \textbf{Kafka} $\rightarrow$ \textbf{Prometheus}/\textbf{InfluxDB}）。
+
+\vspace{4pt}
+
+% ===== Internships =====
+\noindent
+\href{https://www.tencent.com}{\company{腾讯}} \hfill 软件开发实习生 \hfill 2021/05 -- 2021/09 \\
+开发基于 Go 的 gRPC 微服务，用于直播业务，涉及 Kafka、MySQL、Redis。
+
+\vspace{2pt}
+\noindent
+\href{https://www.bytedance.com}{\company{字节跳动}} \hfill 软件开发实习生 \hfill 2021/03 -- 2021/05
+
+\vspace{1pt}
+\noindent
+\href{https://www.data.ai}{\company{App Annie}} \hfill 后端开发实习生 \hfill 2020/11 -- 2021/02
+
+\vspace{0pt}
+\noindent
+\href{https://www.baidu.com}{\company{百度}} \hfill 数据开发实习生 \hfill 2020/01 -- 2020/10
+
+% ---------- Projects ----------
+\section*{个人项目}
+\noindent
+\href{https://github.com/ryan42xyz/agents}{\textbf{ryan42xyz/agents}} --- SRE Triage Agent（基于 Anthropic SDK 从零实现 agent loop、安全门控、评估框架） \\
+\href{https://github.com/ryan42xyz/context-infrastructure}{\textbf{ryan42xyz/context-infrastructure}} --- AI 原生上下文系统、记忆架构与 Agent 工作流基础设施 \\
+\href{https://github.com/ryan42xyz/chatgpt_flow}{\textbf{ryan42xyz/chatgpt\_flow}} --- 浏览器插件，提取和整理 ChatGPT 对话数据
+
+% ---------- Skills ----------
+\section*{技能}
+\textbf{编程语言：}Python, Golang, Java, Shell, SQL \\
+\textbf{基础设施与数据：}AWS, GCP, Kubernetes, Docker, MySQL, Yugabyte, ClickHouse, Redis, Kafka, Elasticsearch \\
+\textbf{可观测性与平台：}Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git, Jenkins
+
+% ---------- Education ----------
+\section*{教育背景}
+\textbf{硕士}，{\small 北京科技大学，计算机科学与技术（北京）} \hfill {\small 2019/09 -- 2022/06}
+
+\vspace{4pt}
+\noindent
+\textbf{学士}，{\small 文华学院，电子信息工程（武汉）} \hfill {\small 2014/09 -- 2018/06}
+
+\end{document}

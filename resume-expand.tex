@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1.15cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontspec}
+
+% ---------- Fonts ----------
+\setmainfont{Times New Roman}
+
+% ---------- Section Style ----------
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{7pt}{5pt}
+
+% ---------- List Style ----------
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+% ---------- Hyperlink ----------
+\hypersetup{
+  colorlinks=true,
+  urlcolor=black
+}
+
+% ---------- Document ----------
+\begin{document}
+\pagenumbering{gobble}
+
+% ---------- Header ----------
+\noindent
+\begin{minipage}[t]{0.62\textwidth}
+  {\fontsize{22}{24}\selectfont \textbf{Rui Shao}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.36\textwidth}
+  \raggedleft
+  {\small +86-15623713170 / +81-07090122378}\\
+  {\small \href{mailto:sr1054461216@gmail.com}{sr1054461216@gmail.com}}\\
+  {\small \href{https://github.com/ryan42xyz}{github.com/ryan42xyz}}
+\end{minipage}
+
+\vspace{-2pt}
+
+% ---------- Experience ----------
+\section*{Experience}
+
+% ===== Datavisor =====
+\noindent
+\href{https://www.datavisor.com}{\textbf{Datavisor}} \hfill \textit{Senior Site Reliability Engineer (Japan)} \hfill 2025/10 -- Present \\
+\phantom{\href{https://www.datavisor.com}{\textbf{Datavisor}}} \hfill \textit{Site Reliability Engineer (China)} \hfill 2025/03 -- 2025/10
+
+\vspace{4pt}
+
+\noindent\textbf{\textit{Deployment \& Reliability}} \hfill \textit{(\textbf{AWS} \textbf{6 regions} | \textbf{Kubernetes} \textbf{25+ clusters} | \textbf{600+ nodes} )} \hfill \mbox{}
+\begin{itemize}
+  \item Led a multi-version upgrade of self-managed \textbf{Kubernetes} clusters on \textbf{AWS}, coordinating \textbf{control-plane} upgrades, system component compatibility (\textbf{Calico}, \textbf{AWS cloud-controller-manager}, \textbf{cluster-autoscaler}), and worker-node replacement via \textbf{ASG Launch Template}.
+  \item Built a staged upgrade workflow with preflight compatibility checks (APIs, CRDs), etcd snapshot rollback, and controlled node draining with \textbf{PodDisruptionBudgets} to protect stateful workloads (MySQL, Kafka, ClickHouse).
+  \item Implemented traffic-safe rollout with blue-green validation and progressive traffic warm-up using \textbf{SLO} (latency, error rate, critical APIsuccess, restarts).
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\textbf{\textit{Traffic \& Multi-Region}}
+\begin{itemize}
+  \item Designed \textbf{API Gateway}-based cross-cluster traffic control for stateless \textbf{Kubernetes} services, enabling weighted routing between primary and standby clusters for canary releases, cutovers, and incident failover.
+  \item Implemented \textbf{SLI}-driven failover logic using service-level signals, with staged failback and warm-up validation to prevent route flapping and ensure stable recovery under production traffic.
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\textbf{\textit{Observability}}
+\begin{itemize}
+  \item Shifted monitoring from resource-centric alerts to service-level \textbf{SLO} signals (latency, error rate, burn-rate), improving alert quality and reducing noisy infrastructure alarms in a multi-cluster \textbf{Kubernetes} environment.
+  \item Built an AI-assisted incident investigation workflow that correlates metrics, logs, deployment history, and service dependencies into a single operator view, accelerating on-call triage and reducing time-to-diagnosis.
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\textbf{\textit{Cost Optimization}}
+\begin{itemize}
+  \item Reduced cloud spend by optimizing compute models (\textbf{Reserved} baseline, On-Demand scaling, \textbf{Spot} for tolerant workloads) while maintaining reliability guardrails and fallback capacity for production services.
+  \item Improved cost efficiency across compute, storage, and network layers by implementing storage lifecycle policies, optimizing log retention, and reducing unnecessary cross-AZ data transfer in a multi-cluster Kubernetes environment.
+\end{itemize}
+
+\vspace{2pt}
+
+\noindent\textbf{\textit{On-call Incident Response}}
+\begin{itemize}
+  \item Led production on-call incident response across Kubernetes and AWS, triaging and diagnosing cross-layer connectivity and performance issues across traffic, networking, application, and node layers using symptom-driven analysis.
+  \item Restored service through controlled mitigations such as traffic splitting, selective degradation, bounded scaling, and node replacement while limiting blast radius.
+\end{itemize}
+
+\vspace{5pt}
+
+% ===== Intel =====
+\noindent
+\href{https://www.intel.com}{\textbf{Intel}} \hfill \textit{Cloud Software Development Engineer} \hfill 2022/06 -- 2025/02 (China)
+
+\vspace{2pt}
+\begin{itemize}
+  \item Built \textbf{Kubernetes} platform tooling using operator-style controllers, IaC (GitOps/Ansible) cluster management.
+  \item Developed Go-based \textbf{gRPC} service using \textbf{OpenTelemetry SDK} to transform structured messages into metrics and stream high-throughput time-series via \textbf{Kafka} into \textbf{Prometheus} and \textbf{InfluxDB}.
+\end{itemize}
+
+\vspace{4pt}
+
+% ===== Internships =====
+\noindent
+\href{https://www.tencent.com}{\textbf{Tencent Inc.}} \hfill \textit{Software Development Engineer Intern} \hfill 2021/05 -- 2021/09 \\
+Built Go-based gRPC microservices for live-streaming workloads, working with Kafka, MySQL, and Redis.
+
+\vspace{2pt}
+\noindent
+\href{https://www.bytedance.com}{\textbf{ByteDance Inc.}} \hfill \textit{Software Development Engineer Intern} \hfill 2021/03 -- 2021/05
+
+\vspace{1pt}
+\noindent
+\href{https://www.data.ai}{\textbf{App Annie}} \hfill \textit{Web Backend Engineer Intern} \hfill 2020/11 -- 2021/02
+
+\vspace{0pt}
+\noindent
+\href{https://www.baidu.com}{\textbf{Baidu Inc.}} \hfill \textit{Data Engineer Intern} \hfill 2020/01 -- 2020/10
+
+% ---------- Skills ----------
+\section*{Skills}
+\textbf{Languages:} Python, Golang, Java, Shell, SQL \\
+\textbf{Infrastructure \& Data:} AWS, GCP, Kubernetes, Docker, MySQL, Yugabyte, ClickHouse, Redis, Kafka, Elasticsearch \\
+\textbf{Observability \& Platform:} Prometheus, InfluxDB, Grafana, Loki, gRPC, Helm, Git, Jenkins
+
+% ---------- Education ----------
+\section*{Education}
+\textbf{Master}, {\small University of Science \& Technology Beijing, Computer Science and Technology (Beijing, China)} \hfill {\small 2019/09 -- 2022/06}
+
+\vspace{4pt}
+\noindent
+\textbf{Bachelor}, {\small Wenhua College, Electronic Information Engineering (Wuhan, China)} \hfill {\small 2014/09 -- 2018/06}
+
+\end{document}
